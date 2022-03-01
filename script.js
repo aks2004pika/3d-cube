@@ -204,6 +204,7 @@ var colorValue = document.getElementById("colorInput").value;
 var box = document.querySelectorAll(".box");
 
 changeBtn.onclick = () => {
+  sizeChange();
   colorChange();
   animTimeChange();
   Object.assign(editBlock.style, editBlockCloseAnim);
@@ -237,7 +238,7 @@ function animTimeChange() {
   var animTimeValue = document.getElementById(newLocal).value;
 
   if (animTimeValue == "") {
-    animTimeValue = "50s";
+    animTimeValue = 50 + "s";
   }
 
   var boxAnim = {
@@ -246,3 +247,38 @@ function animTimeChange() {
 
   Object.assign(block.style, boxAnim);
 }
+
+var range = document.getElementById("rangeInput");
+var rangeValue = document.getElementById("rangeInput").value;
+
+function sizeChange() {
+  const newLocal = "rangeInput";
+  var rangeValue = document.getElementById(newLocal).value;
+
+  var boxSize = {
+    width: rangeValue + "px",
+    height: rangeValue + "px",
+  };
+
+  Object.assign(box[0].style, boxSize);
+  Object.assign(box[1].style, boxSize);
+  Object.assign(box[2].style, boxSize);
+  Object.assign(box[3].style, boxSize);
+  Object.assign(box[4].style, boxSize);
+  Object.assign(box[5].style, boxSize);
+}
+
+function rangeOutputChange() {
+  var range = document.getElementById("rangeInput");
+  var rangeOutput = document.getElementById("rangeOutput");
+
+  rangeOutput.textContent = `${range.value}px`;
+}
+
+range.oninput = () => {
+  rangeOutputChange();
+};
+
+window.onload = () => {
+  range.value = 100;
+};
