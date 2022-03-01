@@ -233,7 +233,8 @@ var animTimeValue = document.getElementById("inputAnimTime").value;
 var block = document.querySelector(".main");
 
 function animTimeChange() {
-  var animTimeValue = document.getElementById("inputAnimTime").value;
+  const newLocal = "inputAnimTime";
+  var animTimeValue = document.getElementById(newLocal).value;
 
   if (animTimeValue == "") {
     animTimeValue = "50s";
